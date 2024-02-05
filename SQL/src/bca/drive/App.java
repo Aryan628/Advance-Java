@@ -2,7 +2,8 @@ package bca.drive;
 
 import java.sql.*;
 import java.util.Scanner;
-import bca.model.Student;
+
+import bca.model.Employee;
 
 public class App
 {
@@ -11,14 +12,15 @@ public class App
 		
 		while (true)
 		{
-			menu();
+			Scanner sc = new Scanner(System.in);
+			menu(sc);
 		}
 		
 	}
-	public static void menu() throws ClassNotFoundException, SQLException
+	public static void menu(Scanner sc) throws ClassNotFoundException, SQLException
 	{
-		Scanner sc = new Scanner(System.in);
-		Student s = new Student();
+		
+		Employee s = new Employee();
 		System.out.println("Enter Your Choice :\n1 -> View\n2 -> Insert\n3 -> Delete\n4 -> Update\n5 -> Exit");
 		int ch = sc.nextInt();
 		switch (ch) 
@@ -30,35 +32,62 @@ public class App
 			}
 			case 2:
 			{
-				System.out.print("Enter The Details of the Student\nRoll = ");
+				System.out.print("Enter The Details of the Employee\nID = ");
 				String roll = sc.next();
-				System.out.print("Name = ");
-				String name = sc.next();
+				System.out.print("First Name = ");
+				String fname = sc.next();
+				System.out.print("Last Name = ");
+				String lname = sc.next();
+				System.out.print("Age = ");
+				String age = sc.next();
 				System.out.print("DOB (YYYY-MM-DD) = ");
 				String date = sc.next();
-				s.Insert(roll, name, date);
+				s.Insert(roll, fname, lname , age, date);
 				break;
 			}
 			case 3:
 			{
-				System.out.println("Enter The Roll whose Details needs to be Deleted");
-				String roll = sc.next();
-				s.Delete(roll);
+				System.out.println("Enter The Id whose Details needs to be Deleted");
+				String id = sc.next();
+				s.Delete(id);
 				break;
 			}
 			case 4:
 			{
-				System.out.println("Enter The Roll of the Student Whose Data needs to be Updated");
-				String roll = sc.next();
+				System.out.println("Enter The ID of the Employee Whose Data needs to be Updated");
+				String id = sc.next();
 				System.out.println("Present Details");
-				s.Select_Specific(roll);
-				System.out.print("\nEnter The Details To Be Updated (If Same Data Needs to be Kept for some field then Rewrite it as same\nName = ");
-				String name = sc.next();
-				System.out.print("DOB (YYYY-MM-DD) = ");
-				String dob = sc.next();
-				s.Update(roll, name, dob);
-				System.out.println("\n-----New Data-----");
-				s.Select_Specific(roll);
+				s.Select_Specific(id);
+				System.out.println("Select What Data you need to change\n1 -> Name\n2 -> Age(Date As well)\n3 -> Multiple Data");
+				int c = sc.nextInt();
+				if(c==1)
+				{
+					System.out.print("Enter First Name : ");
+					String fname = sc.next();
+					System.out.print("Enter Last Name : ");
+					String lname = sc.next();
+					s.UpdateName(id, fname, lname);
+				}
+				else if(c==2)
+				{
+					System.out.print("Enter Age : ");
+					String ag = sc.next();
+					System.out.print("Date Of Birth (YYYY-MM-DD) : ");
+					String dOB = sc.next();
+					s.UpdateAge(id,ag,dOB);
+				}
+				else if(c==3)
+				{
+					System.out.print("Enter First Name : ");
+					String fname = sc.next();
+					System.out.print("Enter Last Name : ");
+					String lname = sc.next();
+					System.out.print("Enter Age : ");
+					String ag = sc.next();
+					System.out.print("Date Of Birth (YYYY-MM-DD) : ");
+					String dOB = sc.next();
+					s.Update(id, fname, lname, ag, dOB);
+				}
 				break;
 			}
 			case 5:
