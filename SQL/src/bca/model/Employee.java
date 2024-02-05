@@ -7,11 +7,11 @@ public class Employee
 	public Employee() throws ClassNotFoundException, SQLException
 	{
 		String query = "Create Table if not exists Employee ("+
-						"ID varchar(2) not null,"+
-						"First_Name varchar(255),"+
-						"Last_Name varchar(255),"+
-						"Age varchar(2),"+
-						"DOB date)";
+						"ID varchar(2) Primary key,"+
+						"First_Name varchar(255) Not Null,"+
+						"Last_Name varchar(255)  Not Null," +
+						"Age varchar(2) Not Null,"+
+						"DOB date) Not Null";
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCA","root","Aryan@04");
