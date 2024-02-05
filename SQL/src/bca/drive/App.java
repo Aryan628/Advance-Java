@@ -20,7 +20,7 @@ public class App
 	{
 		
 		Employee s = new Employee();
-		System.out.println("Enter Your Choice :\n1 -> View\n2 -> Insert\n3 -> Delete\n4 -> Update\n5 -> Exit");
+		System.out.println("Enter Your Choice :\n1 -> View All\n2 -> View Specific\n3 -> Insert\n4 -> Delete\n5 -> Update\n6 -> Exit");
 		int ch = sc.nextInt();
 		switch (ch) 
 		{
@@ -29,7 +29,14 @@ public class App
 				s.Select();
 				break;
 			}
-			case 2:
+			case 2: 
+			{
+				System.out.println("Enter The ID whose Details to be seen");
+				String id = sc.next();
+				s.Select_Specific(id);
+				break;
+			}
+			case 3:
 			{
 				System.out.print("Enter The Details of the Employee\nID = ");
 				String roll = sc.next();
@@ -44,14 +51,14 @@ public class App
 				s.Insert(roll, fname, lname , age, date);
 				break;
 			}
-			case 3:
+			case 4:
 			{
 				System.out.println("Enter The Id whose Details needs to be Deleted");
 				String id = sc.next();
 				s.Delete(id);
 				break;
 			}
-			case 4:
+			case 5:
 			{
 				System.out.println("Enter The ID of the Employee Whose Data needs to be Updated");
 				String id = sc.next();
@@ -89,7 +96,7 @@ public class App
 				}
 				break;
 			}
-			case 5:
+			case 6:
 			{
 				System.out.println("System Exited");
 				System.exit(0);
