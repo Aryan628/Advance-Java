@@ -9,10 +9,9 @@ public class App
 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException 
 	{
-		
+		Scanner sc = new Scanner(System.in);
 		while (true)
 		{
-			Scanner sc = new Scanner(System.in);
 			menu(sc);
 		}
 		
@@ -96,7 +95,7 @@ public class App
 				System.exit(0);
 			}
 			default:
-				throw new IllegalArgumentException("Unexpected value: " + ch);
+				System.out.println("Please Enter  a Valid Option");
 		}
 	}
 }
