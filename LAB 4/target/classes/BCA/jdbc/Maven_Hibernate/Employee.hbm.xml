@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    
+    <class name = "BCA.jdbc.Maven_Hibernate.Employee" table = "Employee">
+    <id name = "ID">
+    <generator class="assigned"></generator>
+    </id>
+    
+    <property name="First_Name"></property>
+    <property name="Last_Name"></property>
+    <property name="Age"></property>
+    <property name="DOB"></property>
+    
+    
+    
+    </class>
+    
+    
+    </hibernate-mapping>
